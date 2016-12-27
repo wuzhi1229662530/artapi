@@ -1,0 +1,2278 @@
+[ 2016-12-22T01:39:42-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000158s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002857s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003422s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.010355s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.031842s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0380s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0324s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0355s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0361s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0381s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0386s ]
+
+[ 2016-12-22T02:43:20-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000153s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001685s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002031s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003692s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007260s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0327s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0316s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0326s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0355s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0322s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0374s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0326s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0344s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0341s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+       ' at line 5
+ [ SQL语句 ] : SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001806s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002245s ]
+
+[ 2016-12-22T02:43:54-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001482s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003629s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004691s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009547s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0312s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0329s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0314s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0323s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0345s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0360s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0307s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0322s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0314s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+       ' at line 5
+ [ SQL语句 ] : SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6 
+
+[ 2016-12-22T02:44:05-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000099s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002714s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002030s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003478s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006342s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0310s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0305s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0308s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0326s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0315s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0355s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0303s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0302s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0313s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+       ' at line 5
+ [ SQL语句 ] : SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6 
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+       ' at line 5
+ [ SQL语句 ] : SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6 
+
+[ 2016-12-22T02:45:21-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001249s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004038s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004265s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009113s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0473s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0319s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0332s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0338s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0329s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0785s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.2559s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0643s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0447s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0452s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0325s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0744s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0729s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0405s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1   [ RunTime:0.0373s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0384s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4 [ RunTime:0.0540s ]
+
+[ 2016-12-22T02:45:34-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000087s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001328s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002325s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002888s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006445s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0318s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0300s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0297s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0320s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0371s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0356s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0298s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0299s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0300s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0306s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0296s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0681s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 82 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 87 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0580s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0298s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1   [ RunTime:0.0298s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0312s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4 [ RunTime:0.0455s ]
+
+[ 2016-12-22T02:59:03-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000096s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001721s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002003s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003504s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006291s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0391s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0329s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0342s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0354s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0335s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0388s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0319s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0318s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0330s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0334s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0538s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0384s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0645s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0647s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0341s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1   [ RunTime:0.0616s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4 [ RunTime:0.0494s ]
+
+[ 2016-12-22T03:10:23-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001196s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001845s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004099s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006878s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0342s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0382s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0320s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0345s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0417s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0383s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0322s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0310s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0339s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0332s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0336s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0312s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0617s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0601s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0312s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1 [ RunTime:0.0319s ]
+NOTIC: [8] Undefined index: config_flag G:\wamp\www\hejia\artbeanappapi\Application\Home\Controller\ShopController.class.php 第 62 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4 [ RunTime:0.0443s ]
+
+[ 2016-12-22T03:25:00-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000092s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001815s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002108s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002921s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005742s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0369s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0392s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0354s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0944s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0393s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0419s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0354s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0348s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0353s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0483s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0375s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0346s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0689s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0741s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0349s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1 [ RunTime:0.0336s ]
+
+[ 2016-12-22T03:26:06-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001164s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001609s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003238s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005480s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0327s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0327s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0336s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0325s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0359s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0376s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0314s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0334s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0340s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0372s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0322s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0326s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0915s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0503s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0315s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1 [ RunTime:0.0314s ]
+
+[ 2016-12-22T03:26:25-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000072s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001152s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001727s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002967s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005608s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0363s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0317s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0417s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0324s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0327s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0432s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0322s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0348s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0327s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0358s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0326s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0411s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0673s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0613s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0319s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1 [ RunTime:0.0311s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4 [ RunTime:0.0603s ]
+
+[ 2016-12-22T03:26:41-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000070s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002069s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002243s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002848s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006001s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0367s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0361s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_expert_recommend` [ RunTime:0.0353s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 8 [ RunTime:0.0406s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0367s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 8 [ RunTime:0.0415s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0403s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT ucase(m.dictname) as theme_name,
+                   m.id as theme,
+                   CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(m.pic_path,'.',1),'_s',SUBSTRING(m.pic_path,LENGTH(SUBSTRING_INDEX(m.pic_path,'.',1))+1,LENGTH(m.pic_path)))) as img_url
+                FROM sys_diction m where
+                m.delete_status = 0
+                and m.typeid = 63
+                limit 0,12 [ RunTime:0.0435s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_life_news` [ RunTime:0.0444s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT s.id,
+                     CONCAT('LifeNewsID_', s.id) jump_url,
+                     s.news_title,
+                     CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(s.cover_imgPath,'.',1),'_s',SUBSTRING(s.cover_imgPath,LENGTH(SUBSTRING_INDEX(s.cover_imgPath,'.',1))+1,LENGTH(s.cover_imgPath)))) as img_url,
+                      FROM_UNIXTIME(UNIX_TIMESTAMP(s.create_time),"%M %e, %Y") as create_time,
+                     s.news_sources,
+                     s.news_type,
+                     s.news_desc,
+                     s.author news_author,
+                     s.column
+                from ab_life_news s
+                where (
+                        s.news_examine in (1) or
+                        (
+                        s.news_examine in (2) and
+                         DATE_FORMAT(now(),'%Y-%m-%d %H:%i:%s')
+                         >=
+                         DATE_FORMAT(s.issuance_time,'%Y-%m-%d %H:%i:%s')
+                        )
+                    ) and s.delete_status in (0)
+                and s.column=27
+                            and s.is_highlight in (1)
+                order by s.pxh asc,s.create_time desc
+                limit 0,6  [ RunTime:0.0421s ]
+NOTIC: [8] Undefined index: HTTP_X_REAL_IP G:\wamp\www\hejia\artbeanappapi\Application\Common\Common\function.php 第 463 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0378s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `operation_click` [ RunTime:0.0367s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: select sd.id,IFNULL(sum(a.themeNum),0) as themeNum from (
+        select sd.id,count(sd.id) as themeNum from operation_click oc 
+                    left join ab_base_goods abg on oc.oper=abg.id left join sys_diction sd on sd.id=abg.theme 
+                    where sd.id is not null and(  
+                     oc.ip = '0.0.0.0'  
+                      )
+                    group by sd.id
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_user_favourit auf 
+                left join ab_base_goods abg on auf.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+                where sd.id is not null 
+                  
+                group by sd.id 
+        union all
+        select sd.id,count(sd.id) as themeNum from ab_shop_order_goods asog 
+            left join ab_shop_order aso on aso.id=asog.order_id 
+            left join ab_base_goods abg on asog.goods_id=abg.id left join sys_diction sd on sd.id=abg.theme 
+            where sd.id is not null 
+            
+            group by sd.id ) a right join sys_diction sd on a.id=sd.id group by a.id [ RunTime:0.0573s ]
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 76 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: themenum G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [2] Division by zero G:\wamp\www\hejia\artbeanappapi\Application\Home\Model\BaseGoodsModel.class.php 第 81 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL:  SELECT t.id,
+            CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+            concat('ShopGoodsID_',t.id) jump_url,
+            concat(round(t.longth), '×', round(t.width)) size,
+            t.sell_price,
+            d.name authorname,
+            t.recommended,
+            t.title name
+            FROM ab_base_goods t left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0)
+        LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0)
+        where t.is_online in (1) and   t.inventory in (1) and a.type in (1) and a.author is not null and t.delete_status  in (0)
+            
+        and t.id >= (SELECT floor(RAND() * (SELECT MAX(t.id) FROM ab_base_goods t 
+        left join ab_base_author_goods a on t.id=a.goods and a.delete_status in (0) 
+                LEFT JOIN ab_base_author d ON a.author = d.id AND d.delete_status in (0) 
+                where t.is_online in (1) and  t.inventory in (1) and a.type in (1)  and a.author is not null and t.delete_status in (0)
+            
+        )))  
+        ORDER BY t.id LIMIT 
+       8 [ RunTime:0.0865s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_sale_config` [ RunTime:0.0375s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1 [ RunTime:0.0362s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4 [ RunTime:0.0517s ]
+
+[ 2016-12-22T03:50:51-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001255s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006749s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.032554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.040042s ]
+
+[ 2016-12-22T03:51:41-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002066s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001421s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003565s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005675s ]
+
+[ 2016-12-22T03:55:41-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001154s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002325s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002989s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005974s ]
+
+[ 2016-12-22T03:55:55-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004352s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001532s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.005993s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008222s ]
+
+[ 2016-12-22T03:55:56-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001200s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002128s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004327s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007396s ]
+
+[ 2016-12-22T03:56:51-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000069s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001990s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001595s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002451s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004697s ]
+
+[ 2016-12-22T03:56:59-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001215s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002025s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003404s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006156s ]
+
+[ 2016-12-22T03:57:06-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000091s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001139s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001723s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002534s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005164s ]
+
+[ 2016-12-22T04:02:35-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001182s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002529s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002570s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005968s ]
+
+[ 2016-12-22T04:02:49-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001182s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001789s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002572s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004944s ]
+
+[ 2016-12-22T04:03:24-05:00 ] ::1 /hejia/artbeanappapi/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000093s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002149s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001458s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002728s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004831s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0399s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0340s ]
+

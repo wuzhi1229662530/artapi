@@ -1,0 +1,222 @@
+[ 2016-08-30T09:48:26+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000393s ]
+INFO: [ app_init ] --END-- [ RunTime:0.090475s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.043894s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.061048s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.105726s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0324s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0297s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0342s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0345s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_diction.id,sys_diction.dictname,sys_diction.typeid FROM `sys_diction` WHERE ( sys_diction.isdisabled in (0) and sys_diction.delete_status in (0)  )  [ RunTime:0.0302s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0297s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT max(sell_price) as max_sell_price,min(sell_price) as min_sell_price FROM `ab_base_goods` WHERE ( is_online in (1) and delete_status in (0) and inventory in (1)    ) LIMIT 1   [ RunTime:0.0348s ]
+NOTIC: [8] Undefined variable: sql_where G:\wamp\www\artbean2\code\trunk\webService\Application\Home\Controller\ShopController.class.php 第 211 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_author_goods` [ RunTime:0.0354s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT count(ab_base_goods.id) as length FROM `ab_base_goods` left join ab_base_author_goods ON ab_base_goods.id = ab_base_author_goods.goods and ab_base_author_goods.delete_status in (0)  and ab_base_author_goods.type in (1)  left join ab_base_author a on ab_base_author_goods.author = a.id and a.name is not null and a.author_type in (1)  WHERE ( ab_base_goods.inventory in (1) and ab_base_goods.is_online in (1) and ab_base_goods.delete_status in (0)   and on_sale in (1) ) LIMIT 1   [ RunTime:0.0371s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(ab_base_goods.cover_path,'.',1),'_s',SUBSTRING(ab_base_goods.cover_path,LENGTH(SUBSTRING_INDEX(ab_base_goods.cover_path,'.',1))+1,LENGTH(ab_base_goods.cover_path)))) as img_url,ab_base_goods.id,ab_base_goods.inventory,ab_base_goods.weight,ab_base_goods.recommended,CONCAT("ShopGoodsID_",ab_base_goods.id) as jump_url,ab_base_goods.title as name,ab_base_goods.sell_price,CONCAT(round(ab_base_goods.longth),"×",round(ab_base_goods.width) ) as size,a.name as authorname,(select d.dictname from sys_diction d where d.id = ab_base_goods.medium) as medium,ab_base_goods.material FROM `ab_base_goods` left join ab_base_author_goods ON ab_base_goods.id = ab_base_author_goods.goods and ab_base_author_goods.delete_status in (0)  and ab_base_author_goods.type in (1)  inner join ab_base_author a on ab_base_author_goods.author = a.id and a.name is not null  and on_sale in (1)  WHERE ( ab_base_goods.inventory in (1) and ab_base_goods.is_online in (1) and ab_base_goods.delete_status in (0)   ) ORDER BY ab_base_goods.sort asc,ab_base_goods.online_time desc LIMIT 0,10   [ RunTime:0.0469s ]
+
+[ 2016-08-30T09:55:28+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001140s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001404s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002354s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004524s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0332s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0355s ]
+
+[ 2016-08-30T09:55:46+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000167s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002391s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001053s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004918s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0434s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0552s ]
+
+[ 2016-08-30T09:56:26+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001040s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002437s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.005676s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009187s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0382s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0346s ]
+NOTIC: [2] Invalid argument supplied for foreach() G:\wamp\www\artbean2\code\trunk\webService\Application\Home\Controller\ShopController.class.php 第 180 行.
+NOTIC: [8] Undefined variable: str G:\wamp\www\artbean2\code\trunk\webService\Application\Home\Controller\ShopController.class.php 第 190 行.
+NOTIC: [2] implode(): Invalid arguments passed G:\wamp\www\artbean2\code\trunk\webService\Application\Home\Controller\ShopController.class.php 第 190 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0346s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0337s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_diction.id,sys_diction.dictname,sys_diction.typeid FROM `sys_diction` WHERE ( sys_diction.isdisabled in (0) and sys_diction.delete_status in (0)  )  [ RunTime:0.0352s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0336s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT max(sell_price) as max_sell_price,min(sell_price) as min_sell_price FROM `ab_base_goods` WHERE ( is_online in (1) and delete_status in (0) and inventory in (1)    ) LIMIT 1   [ RunTime:0.0400s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_author_goods` [ RunTime:0.0341s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and on_sale in (1) ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT count(ab_base_goods.id) as length FROM `ab_base_goods` left join ab_base_author_goods ON ab_base_goods.id = ab_base_author_goods.goods and ab_base_author_goods.delete_status in (0)  and ab_base_author_goods.type in (1)  left join ab_base_author a on ab_base_author_goods.author = a.id and a.name is not null and a.author_type in (1)  WHERE ( ab_base_goods.inventory in (1) and ab_base_goods.is_online in (1) and ab_base_goods.delete_status in (0)   and () and on_sale in (1) ) LIMIT 1  
+
+[ 2016-08-30T09:56:40+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000798s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002207s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000932s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002069s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003684s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0328s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0315s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0327s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0342s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_diction.id,sys_diction.dictname,sys_diction.typeid FROM `sys_diction` WHERE ( sys_diction.isdisabled in (0) and sys_diction.delete_status in (0)  )  [ RunTime:0.0332s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0333s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT max(sell_price) as max_sell_price,min(sell_price) as min_sell_price FROM `ab_base_goods` WHERE ( is_online in (1) and delete_status in (0) and inventory in (1)    ) LIMIT 1   [ RunTime:0.0366s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_author_goods` [ RunTime:0.0311s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT count(ab_base_goods.id) as length FROM `ab_base_goods` left join ab_base_author_goods ON ab_base_goods.id = ab_base_author_goods.goods and ab_base_author_goods.delete_status in (0)  and ab_base_author_goods.type in (1)  left join ab_base_author a on ab_base_author_goods.author = a.id and a.name is not null and a.author_type in (1)  WHERE ( ab_base_goods.inventory in (1) and ab_base_goods.is_online in (1) and ab_base_goods.delete_status in (0)   and ( theme like '%400%') and on_sale in (1) ) LIMIT 1   [ RunTime:0.0375s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(ab_base_goods.cover_path,'.',1),'_s',SUBSTRING(ab_base_goods.cover_path,LENGTH(SUBSTRING_INDEX(ab_base_goods.cover_path,'.',1))+1,LENGTH(ab_base_goods.cover_path)))) as img_url,ab_base_goods.id,ab_base_goods.inventory,ab_base_goods.weight,ab_base_goods.recommended,CONCAT("ShopGoodsID_",ab_base_goods.id) as jump_url,ab_base_goods.title as name,ab_base_goods.sell_price,CONCAT(round(ab_base_goods.longth),"×",round(ab_base_goods.width) ) as size,a.name as authorname,(select d.dictname from sys_diction d where d.id = ab_base_goods.medium) as medium,ab_base_goods.material FROM `ab_base_goods` left join ab_base_author_goods ON ab_base_goods.id = ab_base_author_goods.goods and ab_base_author_goods.delete_status in (0)  and ab_base_author_goods.type in (1)  inner join ab_base_author a on ab_base_author_goods.author = a.id and a.name is not null  and ( theme like '%400%') and on_sale in (1)  WHERE ( ab_base_goods.inventory in (1) and ab_base_goods.is_online in (1) and ab_base_goods.delete_status in (0)   ) ORDER BY ab_base_goods.sort asc,ab_base_goods.online_time desc LIMIT 0,10   [ RunTime:0.0476s ]
+
+[ 2016-08-30T09:57:10+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001524s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001929s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003673s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0307s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0308s ]
+
+[ 2016-08-30T09:58:20+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/shop/filterGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001167s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001217s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002590s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004582s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_dictype` [ RunTime:0.0302s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0331s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_goods` [ RunTime:0.0303s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `sys_diction` [ RunTime:0.0303s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_diction.id,sys_diction.dictname,sys_diction.typeid FROM `sys_diction` WHERE ( sys_diction.isdisabled in (0) and sys_diction.delete_status in (0)  )  [ RunTime:0.0298s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) )  [ RunTime:0.0305s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT max(sell_price) as max_sell_price,min(sell_price) as min_sell_price FROM `ab_base_goods` WHERE ( is_online in (1) and delete_status in (0) and inventory in (1)    ) LIMIT 1   [ RunTime:0.0346s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_author_goods` [ RunTime:0.0302s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT count(ab_base_goods.id) as length FROM `ab_base_goods` left join ab_base_author_goods ON ab_base_goods.id = ab_base_author_goods.goods and ab_base_author_goods.delete_status in (0)  and ab_base_author_goods.type in (1)  left join ab_base_author a on ab_base_author_goods.author = a.id and a.name is not null and a.author_type in (1)  WHERE ( ab_base_goods.inventory in (1) and ab_base_goods.is_online in (1) and ab_base_goods.delete_status in (0)   and (medium = 396) and on_sale in (1) ) LIMIT 1   [ RunTime:0.0352s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\artbean2\code\trunk\webService\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(ab_base_goods.cover_path,'.',1),'_s',SUBSTRING(ab_base_goods.cover_path,LENGTH(SUBSTRING_INDEX(ab_base_goods.cover_path,'.',1))+1,LENGTH(ab_base_goods.cover_path)))) as img_url,ab_base_goods.id,ab_base_goods.inventory,ab_base_goods.weight,ab_base_goods.recommended,CONCAT("ShopGoodsID_",ab_base_goods.id) as jump_url,ab_base_goods.title as name,ab_base_goods.sell_price,CONCAT(round(ab_base_goods.longth),"×",round(ab_base_goods.width) ) as size,a.name as authorname,(select d.dictname from sys_diction d where d.id = ab_base_goods.medium) as medium,ab_base_goods.material FROM `ab_base_goods` left join ab_base_author_goods ON ab_base_goods.id = ab_base_author_goods.goods and ab_base_author_goods.delete_status in (0)  and ab_base_author_goods.type in (1)  inner join ab_base_author a on ab_base_author_goods.author = a.id and a.name is not null  and (medium = 396) and on_sale in (1)  WHERE ( ab_base_goods.inventory in (1) and ab_base_goods.is_online in (1) and ab_base_goods.delete_status in (0)   ) ORDER BY ab_base_goods.sort asc,ab_base_goods.online_time desc LIMIT 0,10   [ RunTime:0.0483s ]
+
+[ 2016-08-30T10:00:10+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/user/checkEmail
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000069s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003063s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001139s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001987s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003745s ]
+
+[ 2016-08-30T10:00:16+08:00 ] ::1 /artbean2/code/trunk/webservice/index.php/home/user/checkEmail
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001030s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001077s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002359s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004269s ]
+NOTIC: [8] Undefined index: status G:\wamp\www\artbean2\code\trunk\webService\Application\Home\Controller\UserController.class.php 第 491 行.
+

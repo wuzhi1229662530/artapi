@@ -1,0 +1,12 @@
+[ 2016-07-05T17:34:39+08:00 ] ::1 /artbean/code/trunk/webservice/index.php/homete/favoritelist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001273s ]
+ERR: Module can't be loaded:Homete
+
+[ 2016-07-05T17:35:14+08:00 ] ::1 /artbean/code/trunk/webservice/index.php/homete/favoritelist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001574s ]
+ERR: Module can't be loaded:Homete
+

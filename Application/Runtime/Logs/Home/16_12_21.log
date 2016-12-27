@@ -1,0 +1,155 @@
+[ 2016-12-21T22:21:42-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.117021s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.175083s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.141387s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.317557s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_featured` [ RunTime:0.0328s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0296s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT FROM_UNIXTIME( UNIX_TIMESTAMP(create_time),"%M %e,%Y") create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0283s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.056874s ]
+INFO: [ app_end ] --END-- [ RunTime:0.057264s ]
+
+[ 2016-12-21T22:21:51-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000959s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001487s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002369s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004516s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_featured` [ RunTime:0.0315s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0351s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT FROM_UNIXTIME( UNIX_TIMESTAMP(create_time),"%M %e,%Y") create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0306s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001568s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002011s ]
+
+[ 2016-12-21T22:21:57-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000958s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001880s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003333s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_featured` [ RunTime:0.0368s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0321s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT FROM_UNIXTIME( UNIX_TIMESTAMP(create_time),"%M %e,%Y") create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0338s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001588s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001969s ]
+
+[ 2016-12-21T22:23:31-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000984s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001613s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001964s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004372s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0357s ]
+
+[ 2016-12-21T23:09:31-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002012s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003187s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004431s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008237s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0405s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'recommend_link link,recommend_title title,recommend_remark content,`author`,CONC' at line 1
+ [ SQL语句 ] : SELECT ,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002501s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002891s ]
+
+[ 2016-12-21T23:31:21-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001375s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004008s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004355s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009610s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0392s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'recommend_link link,recommend_title title,recommend_remark content,`author`,CONC' at line 1
+ [ SQL语句 ] : SELECT ,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001695s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002113s ]
+
+[ 2016-12-21T23:32:21-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000063s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001349s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001936s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005352s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0302s ]
+
+[ 2016-12-21T23:32:56-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000071s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001208s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001551s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006082s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0329s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0329s ]
+
+[ 2016-12-21T23:57:35-05:00 ] ::1 /hejia/artbeanappapi/home/shop/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001131s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001867s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002680s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005105s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SHOW COLUMNS FROM `ab_base_recommend` [ RunTime:0.0335s ]
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 153 行.
+NOTIC: [8] Undefined index: HTTP_TYPE G:\wamp\www\hejia\artbeanappapi\ThinkPHP\Library\Think\Db\Driver.class.php 第 155 行.
+SQL: SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc  [ RunTime:0.0299s ]
+

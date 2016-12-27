@@ -1,0 +1,159 @@
+2016-12-26 04:11:03 shop/index Other SHOW COLUMNS FROM `ab_base_recommend`
+2016-12-26 04:11:03 shop/index Other SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc 
+2016-12-26 04:11:03 shop/index Other SHOW COLUMNS FROM `ab_base_sale_config`
+2016-12-26 04:11:03 shop/index Other SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1
+2016-12-26 04:11:03 shop/index Other SHOW COLUMNS FROM `ab_base_goods`
+2016-12-26 04:11:03 shop/index Other SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4
+2016-12-26 04:11:04 shop/index Other SHOW COLUMNS FROM `ab_base_expert_recommend`
+2016-12-26 04:11:04 shop/index Other SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 28
+2016-12-26 04:11:04 shop/index Other SHOW COLUMNS FROM `ab_base_goods`
+2016-12-26 04:11:04 shop/index Other SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 28
+2016-12-26 04:11:04 shop/index Other SHOW COLUMNS FROM `ab_base_help_category`
+2016-12-26 04:11:04 shop/index Other SELECT `id`,CONCAT("HelpCateID_",id) as help_url,name  as help_name,`parent_id`,`url` FROM `ab_base_help_category` WHERE ( delete_status in (0) ) 
+2016-12-26 04:27:27 shop/index Other SHOW COLUMNS FROM `ab_base_recommend`
+2016-12-26 04:27:27 shop/index Other SELECT  FROM_UNIXTIME(UNIX_TIMESTAMP(create_time),"%M %e, %Y") as create_time,recommend_link link,recommend_title title,recommend_remark content,`author`,CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(recommend_pic,'.',1),'_s',SUBSTRING(recommend_pic,LENGTH(SUBSTRING_INDEX(recommend_pic,'.',1))+1,LENGTH(recommend_pic)))) as goods_img_url FROM `ab_base_recommend` WHERE ( delete_status in (0) and featured_id in (60)  ) ORDER BY pxh asc 
+2016-12-26 04:27:28 shop/index Other SHOW COLUMNS FROM `ab_base_sale_config`
+2016-12-26 04:27:28 shop/index Other SELECT `config_flag` FROM `ab_base_sale_config` WHERE ( config_code = "tjgn" ) LIMIT 1
+2016-12-26 04:27:28 shop/index Other SHOW COLUMNS FROM `ab_base_goods`
+2016-12-26 04:27:28 shop/index Other SELECT
+                    g.id goods_id,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    CONCAT('ShopGoodsID_', g.id) AS jump_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name authorname,
+                    g.url,
+                    g.title goods_name
+                FROM ab_base_goods g
+                    LEFT JOIN ab_base_author_goods a ON g.id = a.goods AND a.delete_status in (0) AND a.type in (1)
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status in (0)
+                WHERE g.is_online in (1) AND  g.inventory in (1)
+                    AND g.delete_status in (0) AND g.on_sale in (1)
+                ORDER BY g.sort ASC
+                LIMIT 4
+2016-12-26 04:27:28 shop/index Other SHOW COLUMNS FROM `ab_base_expert_recommend`
+2016-12-26 04:27:28 shop/index Other SELECT 
+                    CONCAT('ShopGoodsID_',g.id) as jump_url,
+                    g.title as goods_name,
+                    CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(g.cover_path,'.',1),'_s',SUBSTRING(g.cover_path,LENGTH(SUBSTRING_INDEX(g.cover_path,'.',1))+1,LENGTH(g.cover_path)))) as goods_img_url,
+                    g.longth goods_longth,
+                    g.width goods_width,
+                    g.sell_price goods_price,
+                    c.name  authorname,
+                    g.url,
+                    g.id as goods_id
+                FROM ab_base_expert_recommend er
+                LEFT JOIN ab_base_goods g ON g.id=er.goodsid
+                LEFT JOIN ab_base_author_goods a ON g.id = a.goods and a.delete_status=0 AND a.type = 1
+                LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status=0
+                    WHERE
+                    g.is_online in (1)
+                    and g.inventory != 0
+                    and g.delete_status=0
+                    and er.delete_status in (0)
+                    and er.moduletype in (1,3)
+                    ORDER BY g.sort asc, er.create_time DESC
+                    LIMIT 28
+2016-12-26 04:27:28 shop/index Other SHOW COLUMNS FROM `ab_base_goods`
+2016-12-26 04:27:28 shop/index Other SELECT
+                        CONCAT('ShopGoodsID_',t.id) as jump_url,
+                        CONCAT('http://50.97.37.171',CONCAT(SUBSTRING_INDEX(t.cover_path,'.',1),'_s',SUBSTRING(t.cover_path,LENGTH(SUBSTRING_INDEX(t.cover_path,'.',1))+1,LENGTH(t.cover_path)))) as goods_img_url,
+                        t.longth goods_longth,
+                        t.width goods_width,
+                        t.sell_price goods_price,
+                        c.name as authorname,
+                        t.url,
+                        t.title as goods_name
+                    FROM
+                        ab_base_goods t
+                    LEFT JOIN ab_base_author_goods a ON t.id = a.goods AND a.delete_status = 0 and a.type = 1
+                    LEFT JOIN ab_base_author c ON a.author = c.id AND c.delete_status = 0
+                    WHERE
+                        t.is_online = 1
+                    AND t.inventory in (1)
+                    AND a.author IS NOT NULL
+                    AND t.delete_status = 0
+                    and t.on_sale = 0
+                    
+                    ORDER BY
+                        t.sort asc,
+                        t.online_time DESC
+                    LIMIT 28
+2016-12-26 04:27:28 shop/index Other SHOW COLUMNS FROM `ab_base_help_category`
+2016-12-26 04:27:28 shop/index Other SELECT `id`,CONCAT("HelpCateID_",id) as help_url,name  as help_name,`parent_id`,`url` FROM `ab_base_help_category` WHERE ( delete_status in (0) ) 
+2016-12-26 04:40:32 shop/filtergoods Other SHOW COLUMNS FROM `sys_dictype`
+2016-12-26 04:40:32 shop/filtergoods Other SHOW COLUMNS FROM `sys_diction`
+2016-12-26 04:40:33 shop/filtergoods Other SELECT sys_diction.id,sys_diction.dictname,sys_diction.typeid FROM `sys_diction` WHERE ( sys_diction.isdisabled in (0) and sys_diction.delete_status in (0)  ) 
+2016-12-26 04:40:33 shop/filtergoods Other SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65,68)  and id not in ( 66, 67 ) ) 
+2016-12-26 04:40:33 shop/filtergoods Other SHOW COLUMNS FROM `ab_base_goods`
+2016-12-26 04:40:33 shop/filtergoods Other SELECT CEILING(max(sell_price)) as max_sell_price,FLOOR(min(sell_price)) as min_sell_price FROM `ab_base_goods` WHERE ( is_online in (1) and delete_status in (0) and inventory in (1)    ) LIMIT 1  
+2016-12-26 05:30:43 shop/filtergoods Other SHOW COLUMNS FROM `sys_dictype`
+2016-12-26 05:30:43 shop/filtergoods Other SHOW COLUMNS FROM `sys_diction`
+2016-12-26 05:30:43 shop/filtergoods Other SELECT sys_diction.id,sys_diction.dictname,sys_diction.typeid FROM `sys_diction` WHERE ( sys_diction.isdisabled in (0) and sys_diction.delete_status in (0)  ) 
+2016-12-26 05:30:43 shop/filtergoods Other SELECT sys_dictype.id,sys_dictype.typename FROM `sys_dictype` WHERE ( sys_dictype.delete_status in (0) and  id in (63,64,65)  and id not in ( 66, 67,68 ) ) 
+2016-12-26 05:37:53 shop/filtergoods Other SHOW COLUMNS FROM `sys_dictype`
+2016-12-26 05:37:53 shop/filtergoods Other SHOW COLUMNS FROM `sys_diction`
+2016-12-26 05:37:53 shop/filtergoods Other SELECT sys_diction.id,sys_diction.dictname,sys_diction.typeid FROM `sys_diction` WHERE ( sys_diction.isdisabled in (0) and sys_diction.delete_status in (0)  ) 
+2016-12-26 05:37:53 shop/filtergoods Other SHOW COLUMNS FROM `ab_base_goods`
+2016-12-26 05:37:53 shop/filtergoods Other SELECT CEILING(max(sell_price)) as max_sell_price,FLOOR(min(sell_price)) as min_sell_price FROM `ab_base_goods` WHERE ( is_online in (1) and delete_status in (0) and inventory in (1)    ) LIMIT 1  
